@@ -15,9 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.generic import TemplateView
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url('', include('driver.urls')),
-    url('', include('rider.urls')),
+
+    url(r'^$', TemplateView.as_view(template_name='landing.html')),
+
+    url(r'^rider/', include('rider.urls')),
+
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+
+    url(r'^driver/', include('driver.urls')),
 ]
+
+
+
