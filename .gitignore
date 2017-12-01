@@ -3,3 +3,4 @@ virtual/
 .env
 media
 .idea/
+db.sqlite3
