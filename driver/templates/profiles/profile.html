@@ -1,0 +1,132 @@
+{% extends 'base/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% block content %}
+
+        {{ block.super }}
+
+
+            <div class="container">
+
+                <h1 class="text-center"> PROFILE </h1>
+
+                <hr>
+
+                <h2> General Information </h2>
+
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-sm-6 col-md-6">
+
+                        <div class="row">
+
+                            <div class="col-sm-4 col-md-4">
+
+                                <a href="" class="btn btn-default"> Profile </a>
+
+                            </div>
+
+                            <div class="col-sm-4 col-md-4">
+
+                                <a href="" class="btn btn-default"> Manage Documents </a>
+
+                            </div>
+
+                            <div class="col-sm-4 col-md-4">
+
+                                <a href="" class="btn btn-default"> Vehicles </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-6 col-md-6">
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div class="row">
+
+                    <h3> Email </h3>
+
+                    <br>
+
+                    <p> {{ email }} </p>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-6 col-md-6">
+
+                        <div class="row">
+
+                            <h3> Mobile </h3>
+
+                            <br>
+
+                            <p> {{ mobile }} </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-6 col-md-6">
+
+                        <div class="row">
+
+                            <h3> Language </h3>
+
+                            <br>
+
+                            <p> {{ language }} </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <h3> Address </h3>
+
+                    <br>
+
+                    <p> {{ address }} </p>
+
+                </div>
+
+                <div class="row">
+
+                    <h3> City </h3>
+
+                    <br>
+
+                    <p> {{ city }} </p>
+
+                </div>
+
+            </div>
+
+
+    {% endblock %}
+
+</body>
+</html>
