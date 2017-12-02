@@ -29,9 +29,6 @@ urlpatterns = [
 
     url(r'^driver/', include('driver.urls')),
 
-    url(r'^location/', include('location.urls')),
-
-    url(r'loci', include('social_auth.urls')),
 ]
 
 
