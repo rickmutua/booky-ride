@@ -54,6 +54,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+
+    # Custom middleware
+    'booky.middleware.OnlineNowMiddleware',
 ]
 
 ROOT_URLCONF = 'booky.urls'
