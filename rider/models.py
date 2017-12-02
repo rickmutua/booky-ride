@@ -10,9 +10,9 @@ class RiderProfile (models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    profpic = models.ImageField(upload_to='profpic/', blank=True, default=False)
+    profpic = models.ImageField(upload_to='rider-profpic/', blank=True, default=False)
 
-    mobile = models.IntegerField()
+    mobile = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
 
@@ -29,4 +29,4 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
 
-    instance.profile.save()
+    instance.riderprofile.save()

@@ -29,7 +29,7 @@ def rider(request):
 def update_profile(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
-        profile_form = RiderProfileForm(request.POST, instance=request.user.profile)
+        profile_form = RiderProfileForm(request.POST, instance=request.user.riderprofile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
@@ -39,8 +39,8 @@ def update_profile(request):
             messages.error(request, _('Please correct the error below.'))
     else:
         user_form = UserForm(instance=request.user)
-        profile_form = RiderProfileForm(instance=request.user.profile)
-    return render(request, 'profiles/profile.html', {
+        profile_form = RiderProfileForm(instance=request.user.riderprofile)
+    return render(request, 'profiles/update-profile.html', {
         'user_form': user_form,
         'profile_form': profile_form
     })
