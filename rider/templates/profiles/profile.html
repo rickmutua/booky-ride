@@ -1,0 +1,133 @@
+{% extends 'base/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    {% block content %}
+
+        {{ block.super }}
+
+            <div class="container">
+
+                <h1 class="text-center"> PROFILE </h1>
+
+                <hr>
+
+                <h2> General Information </h2>
+
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-sm-6 col-md-6">
+
+                        <div class="row">
+
+                            <h4> Name </h4>
+
+                                <div class="col-md-6">
+
+                                    <p> {{ item.mobile }} </p>
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <p> {{ item.user.last_name }} </p>
+
+                                </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <h4> location </h4>
+
+                    </div>
+
+                </div>
+
+
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-sm-6 col-md-6">
+
+                        <div class="row">
+
+                            <div class="col-sm-6 col-md-6">
+
+                                <h4> Profile Photo </h4>
+
+                            </div>
+
+                            <div class="col-sm-6 col-md-6">
+
+                                <p> photo </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-6 col-md-6">
+
+                        <div class="row">
+
+                            <div class="col-sm-6 col-md-6">
+
+                                <h4> Mobile </h4>
+
+                            </div>
+
+                            <div class="col-sm-6 col-md-6">
+
+                                <p> Kenya +254 </p>
+
+                                <p> {{ mobile }}</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div class="row">
+
+                    <h4> Email Address </h4>
+
+                </div>
+
+                <hr>
+
+                <div class="row" style="text-align: center;">
+
+                    <a href="{% url 'update-profile' %}" class="btn btn-default"> Update s</a>
+
+                </div>
+
+
+            </div>
+
+    {% endblock %}
+
+
+</body>
+</html>
