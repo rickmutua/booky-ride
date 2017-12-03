@@ -3,12 +3,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 
-from .forms import UserForm, RiderProfileForm
+from .forms import UserForm, RiderProfileForm, PlaceForm
 from .models import RiderProfile
 
 from django.db import transaction
 
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.urlresolvers import reverse
 
 from django.http import Http404
 
@@ -60,4 +61,35 @@ def profile(request, username):
         raise Http404()
 
     return render(request, 'profiles/profile.html', {'profile': profile})
+
+
+# def place(request, username):
+#
+#     user = User.objects.get(username=username)
+#
+#     try:
+#
+#         if request.method == 'POST':
+#
+#             place_form = PlaceForm(request.Post)
+#
+#             if place_form.is_valid():
+#
+#                 city = place_form.save(commit=False)
+#                 city.user = user
+#                 city.save()
+#
+#                 return redirect(reverse('rider'))
+#         else:
+#
+#             place_form = PlaceForm()
+#
+#             return render(request, 'base/rider.html', {'place_form': place_form})
+#
+#     except ObjectDoesNotExist:
+#
+#         raise Http404()
+
+
+
 

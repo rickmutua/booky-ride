@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 
-from .forms import UserForm, DriverProfileForm
+from .forms import UserForm, DriverProfileForm,PlaceForm
 from .models import DriverProfile
 
 from django.db import transaction
@@ -18,9 +18,11 @@ from django.http import Http404
 @login_required(login_url='/accounts/login')
 def driver(request):
 
+    form = PlaceForm()
+
     title = 'Drive'
 
-    return render(request, 'base/driver.html', {'title': title})
+    return render(request, 'base/driver.html', {'title': title, 'form': form})
 
 
 @login_required(login_url='/accounts/login')

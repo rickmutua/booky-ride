@@ -4,7 +4,7 @@ confusable-homoglyphs==2.0.2
 Django==1.11.7
 django-bootstrap3==9.1.0
 django-decouple==2.1
-django-location==2.1.1
+django-location-field==2.0.3
 django-mailbox==4.6.0
 django-registration==2.3
 django-social-auth==0.7.28
@@ -15,6 +15,7 @@ lxml==4.1.1
 oauth2==1.9.0.post1
 olefile==0.44
 Pillow==4.3.0
+pkg-resources==0.0.0
 psycopg2==2.7.3.2
 pyicloud-dwoh==0.4.1
 python-openid==2.2.5

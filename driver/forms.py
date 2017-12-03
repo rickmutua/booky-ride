@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from .models import DriverProfile
+from .models import DriverProfile, Place
 from django import forms
 
 
@@ -19,3 +19,12 @@ class DriverProfileForm(forms.ModelForm):
         model = DriverProfile
 
         fields = ('profpic', 'mobile', 'language', 'address', 'city')
+
+
+class PlaceForm(forms.ModelForm):
+
+    class Meta:
+
+        model = Place
+
+        fields = ('name', 'position')

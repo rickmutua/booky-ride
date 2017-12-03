@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from .models import RiderProfile
+from .models import RiderProfile, Place
 from django import forms
 
 
@@ -19,3 +19,12 @@ class RiderProfileForm(forms.ModelForm):
         model = RiderProfile
 
         fields = ('profpic', 'mobile')
+
+
+class PlaceForm(forms.ModelForm):
+
+    class Meta:
+
+        model = Place
+
+        fields = ('name', 'position')

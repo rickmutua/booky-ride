@@ -18,6 +18,28 @@
 
             <a href="{% url 'profile' user.username %}" class="btn btn-default"> Profile </a>
 
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+            <form method="POST" action="">
+
+                {% csrf_token %}
+
+                {{ form.media }}
+
+                {{ form.as_p }}
+
+            </form>
+
+    {% endblock %}
+
+
+    {% block scripts %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        {% bootstrap_javascript %}
+
     {% endblock %}
 
 </body>

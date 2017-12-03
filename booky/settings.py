@@ -24,6 +24,25 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 CLIENT_ID = config('CLIENT_ID')
 CLIENT_SECRET = config('CLIENT_SECRET')
+GEOPOSITION_GOOGLE_MAPS_API_KEY = config('GEOPOSITION_GOOGLE_MAPS_API_KEY')
+
+LOCATION_FIELD = {
+    'map.provider': 'google',
+    'map.zoom': 15,
+    'search.provider': 'google',
+    'provider.google.api': '//maps.google.com/maps/api/js?sensor=false',
+    'provider.google.api_key': config('GEOPOSITION_GOOGLE_MAPS_API_KEY'),
+    'provider.google.map.type': 'ROADMAP',
+}
+
+GEOPOSITION_MAP_OPTIONS = {
+    'minZoom': 3,
+    'maxZoom': 15,
+}
+
+GEOPOSITION_MARKER_OPTIONS = {
+    'cursor': 'move'
+}
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,7 +61,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'driver.apps.DriverConfig',
     'rider.apps.RiderConfig',
-    'bootstrap3'
+    'bootstrap3',
+    'geoposition',
 ]
 
 MIDDLEWARE = [
@@ -85,7 +105,7 @@ WSGI_APPLICATION = 'booky.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'uber',
         'USER': 'erick',
         'PASSWORD':'qwerty12345',
