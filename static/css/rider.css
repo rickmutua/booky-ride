@@ -1,0 +1,10 @@
+h4 {
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    font-weight: bold;
+}
+
+p {
+    font-family: fantasy;
+    font-style: revert;
+    font-size: 16px;
+}

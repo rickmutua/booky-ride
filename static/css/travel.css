@@ -1,0 +1,10 @@
+h3 {
+    font-family: "Droid Sans Mono Slashed";
+    font-weight: bold;
+}
+
+p {
+    font-family: fantasy;
+    font-style: revert;
+    font-size: 16px;
+}
