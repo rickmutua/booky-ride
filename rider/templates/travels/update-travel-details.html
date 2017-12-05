@@ -1,0 +1,90 @@
+{% extends 'base/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% block content %}
+
+        {{ block.super }}
+
+            <div class="container">
+
+                <h1 class="text-center"> PROFILE </h1>
+
+                <hr>
+
+                <h2> General Information </h2>
+
+                <hr>
+
+                <div class="row">
+
+                    <a href="{% url 'index-rider' %}" class="btn btn-default"> Profile </a>
+
+                    <a href="{% url 'travel' %}" class="btn btn-default"> Travel </a>
+
+                    <a href="{% url 'driver-list' %}" class="btn btn-default"> Drivers </a>
+
+                    <a href="" class="btn btn-default"> Reviews </a>
+
+                    <a href="/landing" class="btn btn-default" style="float: right;"> Sign In as Driver </a>
+
+                </div>
+
+                <hr>
+
+                <form method="post" action="{% url 'update-travel-details' %}">
+
+                    {% csrf_token %}
+
+                    <div class="row">
+
+                        <div class="col-sm-6 col-md-6" style="text-align: center">
+
+                            <div class="form-group">
+
+                                {{ form.location.label }} {{ form.location}} <br>
+
+                                    {{ form.location.errors }}
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+
+                            <div class="form-group">
+
+                                {{ form.destination.label }} {{ form.destination }} <br>
+
+                                    {{ form.destination.errors }}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="row" style="text-align: center;">
+
+                        <button type="submit" class="text-center"> Save Changes </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+    {% endblock %}
+
+</body>
+</html>
