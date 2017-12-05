@@ -1,0 +1,143 @@
+{% extends 'vehicles/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% block content %}
+
+        {{ block.super }}
+
+
+            <div class="container">
+
+                <h1 class="text-center"> PROFILE </h1>
+
+                <hr>
+
+                <h2> General Information </h2>
+
+                <hr>
+
+                <div class="row">
+
+                    <a href="{% url 'index-driver' %}" class="btn btn-default"> Profile </a>
+
+                    <a href="" class="btn btn-default"> Manage Documents </a>
+
+                    <a href="{% url 'vehicle' %}" class="btn btn-default"> Vehicles </a>
+
+                    <a href="" class="btn btn-default"> Reviews </a>
+
+                    <a href="{% url 'driver-location' %}" class="btn btn-default"> Location </a>
+
+                    <a href="/landing" class="btn btn-default" style="float: right;"> Sign In as Rider </a>
+
+                </div>
+
+                <hr>
+
+                <div class="row">
+
+
+                    <div class="col-sm-5 col-md-5">
+
+                        <img src="{{ vehicle.image.url}}" alt="image" class="img-responsive">
+                        
+                    </div>
+                    
+                    <div class="col-sm-7 col-md-7">
+
+                        <div class="row">
+
+                            <div class="col-sm-6 col-md-6">
+
+                                <h3> Make </h3> <br>
+
+                                <p> {{ vehicle.make }}</p>
+
+                            </div>
+
+                            <div class="col-sm-6 col-md-6">
+
+                                <h3> Model </h3> <br>
+
+                                <p> {{ vehicle.model }} </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <h3> Registration </h3> <br>
+
+                            <p> {{ vehicle.registration }}</p>
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-sm-6 col-md-6">
+
+                                <h3> Location </h3> <br>
+
+                                <p> {{ item.place }}</p>
+
+                            </div>
+
+                            <div class="col-sm-6 col-md-6">
+
+                                <h3> Destination </h3> <br>
+
+                                <p> {{ item.destination }} </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-sm-6 col-md-6">
+
+                                <h3> Total Seats  </h3> <br>
+
+                                <p> {{ item.total_riders }}</p>
+
+                            </div>
+
+                            <div class="col-sm-6 col-md-6">
+
+                                <h3> Free Seats </h3> <br>
+
+                                <p> {{ item.needed_riders }} </p>
+
+                            </div>
+
+                        </div>
+                        
+                    </div>
+
+                    <hr>
+
+                    <div class="row" style="text-align: center;">
+
+                        <a href="{% url 'update-vehicle-details' %}" class="btn btn-default"> Update </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+    {% endblock %}
+
+</body>
+</html>
