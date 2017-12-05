@@ -3,8 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 
-from .forms import UserForm, RiderProfileForm, PlaceForm
-from .models import RiderProfile
+from .forms import UserForm, RiderProfileForm, TravelForm
+from .models import RiderProfile, Travel
 
 from django.db import transaction
 
@@ -20,47 +20,120 @@ from django.http import Http404
 @login_required(login_url='/accounts/login')
 def rider(request):
 
-    title = 'Ride'
-
-    return render(request, 'base/rider.html', {'title': title})
-
-
-@login_required(login_url='/accounts/login')
-@transaction.atomic
-def update_profile(request):
-    if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=request.user)
-        profile_form = RiderProfileForm(request.POST, instance=request.user.riderprofile)
-        if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
-            messages.success(request, _('Your profile was successfully updated!'))
-            return redirect('settings:profile')
-        else:
-            messages.error(request, _('Please correct the error below.'))
-    else:
-        user_form = UserForm(instance=request.user)
-        profile_form = RiderProfileForm(instance=request.user.riderprofile)
-    return render(request, 'profiles/update-profile.html', {
-        'user_form': user_form,
-        'profile_form': profile_form
-    })
-
-
-@login_required(login_url='/accounts/login')
-def profile(request, username):
+    current_user = request.user
 
     try:
 
-        user = User.objects.get(username=username)
-
-        profile = RiderProfile.objects.filter(user_id=user).all()
+        profile = RiderProfile.objects.get(user=current_user)
 
     except ObjectDoesNotExist:
 
         raise Http404()
 
-    return render(request, 'profiles/profile.html', {'profile': profile})
+    title = 'Ride'
+
+    return render(request, 'base/rider.html', {'title': title, 'profile': profile})
+
+
+@login_required(login_url='/accounts/login')
+@transaction.atomic
+def update_profile_rider(request):
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = RiderProfileForm(request.POST, instance=request.user.riderprofile, files=request.FILES)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile was successfully updated!')
+            return redirect('index-rider')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        user_form = UserForm(instance=request.user)
+        profile_form = RiderProfileForm(instance=request.user.riderprofile)
+    return render(request, 'base/update-profile-rider.html', {
+        'user_form': user_form,
+        'profile_form': profile_form
+    })
+
+
+def travel(request):
+
+    current_user = request.user
+
+    try:
+
+        profile = RiderProfile.objects.get(user=current_user)
+
+        traveling = Travel.objects.get(user=current_user)
+
+    except ObjectDoesNotExist:
+
+        raise Http404()
+
+    return render(request, 'travels/travel.html', {'profile': profile, 'traveling': traveling})
+
+
+def update_travel_details(request):
+
+    current_user = request.user
+
+    try:
+
+        if request.method == 'POST':
+
+            form = TravelForm(request.POST)
+
+            if form.is_valid():
+
+                single_travel = form.save(commit=False)
+
+                single_travel.user = current_user
+
+                single_travel.save()
+
+                return redirect(reverse('travel'))
+
+            else:
+
+                form = TravelForm()
+
+                return render(request, 'travels/update-travel-details', {'form': form})
+
+        else:
+
+            form = TravelForm()
+
+            return render(request, 'travels/update-travel-details.html', {'form': form})
+
+    except ObjectDoesNotExist:
+
+        raise Http404()
+
+
+def driver_list(request):
+
+    return render(request, 'base/driver-list.html')
+
+
+
+
+
+
+# @login_required(login_url='/accounts/login')
+# def rider_profile(request, username):
+#
+#     try:
+#
+#         user = User.objects.get(username=username)
+#
+#         profile = RiderProfile.objects.filter(user_id=user).all()
+#
+#     except ObjectDoesNotExist:
+#
+#         raise Http404()
+#
+#     return render(request, 'profiles/profile.html', {'profile': profile})
 
 
 # def place(request, username):
