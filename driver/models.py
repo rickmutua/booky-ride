@@ -46,3 +46,33 @@ class Place (models.Model):
     name = models.CharField(max_length=100, blank=True, null=True, default=False)
 
     position = GeopositionField()
+
+
+class Vehicle(models.Model):
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    make = models.CharField(max_length=100)
+
+    model = models.CharField(max_length=100)
+
+    year = models.DateField(blank=True, null=True, verbose_name="DOB")
+
+    registration = models.CharField(max_length=50)
+
+    image = models.ImageField(upload_to='vehicle-image/', blank=True, default=False)
+
+
+class Location(models.Model):
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    total_riders = models.IntegerField()
+
+    needed_riders = models.IntegerField()
+
+    place = models.CharField(max_length=100)
+
+    destination = models.CharField(max_length=100)
+
+    position = GeopositionField()
