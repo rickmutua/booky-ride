@@ -1,17 +1,86 @@
+{% load bootstrap3 %}
+{% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    {% block styles %}
+
+        {% bootstrap_css %}
+
+            <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+
+    {% endblock %}
+
 </head>
 <body>
 
-    <h1> <a href="/accounts/register"> Register</a> </h1>
+    <div class="container-fluid" style="margin: 6%; text-align: center;">
+
+        <h2> Get there </h2>
+
+        <h2> Your day belongs to you </h2>
 
 
-    <h1> <a href="/driver"> Login As Driver </a> </h1>
+        <div class="row" style="text-align: center; margin: 6%">
 
-    <h1> <a href="/rider"> Login As Rider </a> </h1>
+            <p>
+                Register as a User in booky and get the chance to ride <br>
+                or drive with us.
+            </p>
+
+            <a href="/accounts/register" class="btn btn-default" id="btn"> Register</a> </h>
+
+
+        </div>
+
+
+        <div class="row" style="margin: 6%">
+
+            <div class="col-sm-6 col-md-6" style="text-align: center;">
+
+                <h3> Reasons To Ride With Us </h3>
+
+                <p>
+                    Easiest way around, anywhere anytime and low cost to luxury
+                </p>
+
+                <a href="/rider/" class="btn btn-default" id="btn"> Login As Rider </a>
+
+
+            </div>
+
+            <div class="col-sm-6 col-md-6" style="text-align: center;">
+
+                <h3> Our Driver Community </h3>
+
+                <p>
+                    Our driver community comprises of different backgrounds, experiences <br>
+                    and interests
+                </p>
+
+                <p>
+                    Join us and be part of this community.
+                </p>
+
+                <a href="/driver" class="btn btn-default" id="btn"> Login As Driver </a>
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+
 
 </body>
 </html>
