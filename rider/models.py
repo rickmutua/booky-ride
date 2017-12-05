@@ -12,7 +12,9 @@ class RiderProfile (models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    profpic = models.ImageField(upload_to='rider-profpic/', blank=True, default=False)
+    profpic = models.ImageField(upload_to='rider-profpic/', blank=True)
+
+    gen_location = models.CharField(max_length=100, blank=True)
 
     mobile = models.IntegerField(null=True, blank=True)
 
@@ -37,5 +39,16 @@ def save_user_profile(sender, instance, **kwargs):
 class Place (models.Model):
 
     name = models.CharField(max_length=100, blank=True, null=True, default=False)
+
+    position = GeopositionField()
+
+
+class Travel(models.Model):
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    location = models.CharField(max_length=100)
+
+    destination = models.CharField(max_length=100)
 
     position = GeopositionField()
