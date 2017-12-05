@@ -1,0 +1,132 @@
+{% extends 'vehicles/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% block content %}
+
+        {{ block.super }}
+
+
+            <div class="container">
+
+                <h1 class="text-center"> PROFILE </h1>
+
+                <hr>
+
+                <h2> General Information </h2>
+
+                <hr>
+
+                <div class="row">
+
+                    <a href="{% url 'index-driver' %}" class="btn btn-default"> Profile </a>
+
+                    <a href="" class="btn btn-default"> Manage Documents </a>
+
+                    <a href="{% url 'vehicle' %}" class="btn btn-default"> Vehicles </a>
+
+                    <a href="" class="btn btn-default"> Reviews </a>
+
+                    <a href="{% url 'driver-location' %}" class="btn btn-default"> Location </a>
+
+                    <a href="/landing" class="btn btn-default" style="float: right;"> Sign In as Rider </a>
+
+                </div>
+
+                <hr>
+
+
+                <form method="post" action="{% url 'update-vehicle-details' %}" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+
+                    <div class="row">
+
+                        <div class="col-sm-6 col-md-6">
+
+                            <div class="form-group">
+
+                                {{ form.make.label }} {{ form.make }} <br>
+
+                                {{ form.make.errors }}
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+
+                            <div class="form-group">
+
+                                {{ form.model.label }} {{ form.model }} <br>
+
+                                {{ form.model.errors }}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-sm-6 col-md-6">
+
+                            <div class="form-group">
+
+                                {{ form.year.label }} {{ form.year }} <br>
+
+                                {{ form.year.errors }}
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+
+                            <div class="form-group">
+
+                                {{ form.registration.label }} {{ form.registration }} <br>
+
+                                {{ form.registration.errors }}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group">
+
+                            {{ form.image.label }} {{ form.image }} <br>
+
+                            {{ form.image.errors }}
+
+                        </div>
+
+                </form>
+
+                <div class="row" style="text-align: center;">
+
+                        <button type="submit" class="text-center"> Save Changes </button>
+
+                    </div>
+
+            </div>
+
+
+    {% endblock %}
+
+</body>
+
+</html>
