@@ -23,9 +23,11 @@ urlpatterns = [
 
     url(r'^$', TemplateView.as_view(template_name='landing.html')),
 
-    url(r'^rider/', include('rider.urls')),
+    url(r'^landing$', TemplateView.as_view(template_name='landing.html')),
 
     url(r'^accounts/', include('registration.backends.simple.urls')),
+
+    url(r'^rider/', include('rider.urls')),
 
     url(r'^driver/', include('driver.urls')),
 
