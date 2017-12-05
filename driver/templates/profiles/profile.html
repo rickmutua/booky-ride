@@ -33,7 +33,7 @@
 
                             <div class="col-sm-4 col-md-4">
 
-                                <a href="" class="btn btn-default"> Profile </a>
+                                <a href="{% url 'driver-profile' user.username %}" class="btn btn-default"> Profile </a>
 
                             </div>
 
@@ -61,67 +61,88 @@
 
                 <hr>
 
-                <div class="row">
+                {% for item in profile %}
 
-                    <h3> Email </h3>
+                    <div class="row">
 
-                    <br>
+                        <img src="" class="img-responsive" alt="profpic"> {{ user.first_name }} <br> {{ user.last_name }}
 
-                    <p> {{ email }} </p>
+                    </div>
 
-                </div>
+                    <div class="row">
 
-                <div class="row">
+                        <h3> Email </h3>
 
-                    <div class="col-sm-6 col-md-6">
+                        <br>
 
-                        <div class="row">
+                        <p> {{ user.email }} </p>
 
-                            <h3> Mobile </h3>
+                    </div>
 
-                            <br>
 
-                            <p> {{ mobile }} </p>
+                    <div class="row">
+
+                        <div class="col-sm-6 col-md-6">
+
+                            <div class="row">
+
+                                <h3> Mobile </h3>
+
+                                <br>
+
+                                <p> {{ item.mobile }} </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+
+                            <div class="row">
+
+                                <h3> Language </h3>
+
+                                <br>
+
+                                <p> {{ item.language }} </p>
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                    <div class="col-sm-6 col-md-6">
+                    <div class="row">
 
-                        <div class="row">
+                        <h3> Address </h3>
 
-                            <h3> Language </h3>
+                        <br>
 
-                            <br>
-
-                            <p> {{ language }} </p>
-
-                        </div>
+                        <p> {{ item.address }} </p>
 
                     </div>
 
-                </div>
+                    <div class="row">
 
-                <div class="row">
+                        <h3> City </h3>
 
-                    <h3> Address </h3>
+                        <br>
 
-                    <br>
+                        <p> {{ item.city }} </p>
 
-                    <p> {{ address }} </p>
+                    </div>
 
-                </div>
+                    <hr>
 
-                <div class="row">
+                    <div class="row" style="text-align: center;">
 
-                    <h3> City </h3>
+                        <a href="{% url 'update-profile' %}" class="btn btn-default"> Update </a>
 
-                    <br>
+                    </div>
 
-                    <p> {{ city }} </p>
 
-                </div>
+                {% endfor %}
+
 
             </div>
 

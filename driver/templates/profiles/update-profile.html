@@ -1,0 +1,184 @@
+{% extends 'base/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% block content %}
+
+        {{ block.super }}
+
+
+            <div class="container">
+
+                <h1 class="text-center"> PROFILE </h1>
+
+                <hr>
+
+                <h2> General Information </h2>
+
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-sm-6 col-md-6">
+
+                        <div class="row">
+
+                            <div class="col-sm-4 col-md-4">
+
+                                <a href="{% url 'driver-profile' user.username %}" class="btn btn-default"> Profile </a>
+
+                            </div>
+
+                            <div class="col-sm-4 col-md-4">
+
+                                <a href="" class="btn btn-default"> Manage Documents </a>
+
+                            </div>
+
+                            <div class="col-sm-4 col-md-4">
+
+                                <a href="" class="btn btn-default"> Vehicles </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-6 col-md-6">
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+
+                <form method="post" action="{% url 'update-profile' %}" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+
+                    <div class="row">
+
+                        <div class="form-group">
+
+                            {{ profile_form.profpic.label }}      {{ profile_form.profpic }} <br>
+
+                            {{ profile_form.profpic.errors }}
+
+                        </div>
+
+                        <div class="form-group">
+
+                            {{ user_form.first_name.label }}    {{ user_form.first_name }} <br>
+
+                            {{ user_form.first_name.errors }}
+
+                        </div>
+
+                        <div class="form-group">
+
+                            {{ user_form.last_name.label }}     {{ user_form.last_name }} <br>
+
+                            {{ user_form.last_name.errors }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="form-group">
+
+                            {{ user_form.email.label }}      {{ user_form.email }} <br>
+
+                                {{ user_form.email.errors }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-sm-6 col-md-6">
+
+                            <div class="row">
+
+                                <div class="form-group">
+
+                                    {{ profile_form.mobile.label }}      {{ profile_form.mobile }} <br>
+
+                                    {{ profile_form.mobile.errors }}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+
+                            <div class="form-group">
+
+                                {{ profile_form.location.label }}      {{ profile_form.location }} <br>
+
+                                {{ profile_form.location.errors }}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="form-group">
+
+                            {{ profile_form.address.label }}      {{ profile_form.address }} <br>
+
+                            {{ profile_form.address.errors }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="form-group">
+
+                            {{ profile_form.city.label }}      {{ profile_form.city }} <br>
+
+                            {{ profile_form.city.errors }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row" style="text-align: center;">
+
+                        <button type="submit" class="text-center"> Save Changes </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+    {% endblock %}
+
+</body>
+</html>
