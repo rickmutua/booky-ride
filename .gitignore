@@ -3,6 +3,7 @@ virtual/
 .env
 media
 .idea/
+static
 db.sqlite3
 categories.json
 confusables.json
