@@ -45,9 +45,9 @@ GEOPOSITION_MARKER_OPTIONS = {
 }
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://booky-ride.herokuapp.com/', '127.0.0.1']
 
 
 # Application definition
