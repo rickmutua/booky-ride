@@ -7,6 +7,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    {% block styles %}
+
+        {% bootstrap_css %}
+
+            <link rel="stylesheet" href="{% static 'css/profpic.css' %}">
+
+            <link rel="stylesheet" href="{% static 'css/rider.css' %}">
+
+    {% endblock %}
+
 </head>
 <body>
 
@@ -45,22 +56,24 @@
 
                 <div class="row">
 
+                    {% for vehicle in car %}
+
 
                     <div class="col-sm-5 col-md-5">
 
                         <img src="{{ vehicle.image.url}}" alt="image" class="img-responsive">
-                        
+
                     </div>
-                    
+
                     <div class="col-sm-7 col-md-7">
 
                         <div class="row">
 
                             <div class="col-sm-6 col-md-6">
 
-                                <h3> Make </h3> <br>
+                                <h3> Make </h3>
 
-                                <p> {{ vehicle.make }}</p>
+                                <p style="text-align: center"> {{ vehicle.make }}</p>
 
                             </div>
 
@@ -68,7 +81,7 @@
 
                                 <h3> Model </h3> <br>
 
-                                <p> {{ vehicle.model }} </p>
+                                <p style="text-align: center"> {{ vehicle.model }} </p>
 
                             </div>
 
@@ -76,28 +89,39 @@
 
                         <div class="row">
 
-                            <h3> Registration </h3> <br>
+                            <h3> Registration </h3>
 
-                            <p> {{ vehicle.registration }}</p>
+                            <p style="text-align: center"> {{ vehicle.registration }}</p>
 
                         </div>
+
+                        {% endfor %}
 
 
                         <div class="row">
 
                             <div class="col-sm-6 col-md-6">
 
-                                <h3> Location </h3> <br>
+                                <h3> Location </h3>
 
-                                <p> {{ item.place }}</p>
+                                {% for location in location %}
+
+                                <p style="text-align: center"> {{ location.place }}</p>
+
+                                {% endfor %}
+
 
                             </div>
 
                             <div class="col-sm-6 col-md-6">
 
-                                <h3> Destination </h3> <br>
+                                <h3> Destination </h3>
 
-                                <p> {{ item.destination }} </p>
+                                {% for location in location %}
+
+                                <p style="text-align: center"> {{ location.destination }} </p>
+
+                                {% endfor %}
 
                             </div>
 
@@ -107,23 +131,33 @@
 
                             <div class="col-sm-6 col-md-6">
 
-                                <h3> Total Seats  </h3> <br>
+                                <h3> Total Seats  </h3>
 
-                                <p> {{ item.total_riders }}</p>
+                                {% for location in location %}
+
+                                <p style="text-align: center"> {{ location.total_riders }}</p>
+
+                                {% endfor %}
 
                             </div>
 
                             <div class="col-sm-6 col-md-6">
 
-                                <h3> Free Seats </h3> <br>
+                                <h3> Free Seats </h3>
 
-                                <p> {{ item.needed_riders }} </p>
+                                {% for location in location %}
+
+                                <p style="text-align: center"> {{ location.needed_riders }} </p>
+
+                                {% endfor %}
 
                             </div>
 
                         </div>
-                        
+
                     </div>
+
+
 
                     <hr>
 

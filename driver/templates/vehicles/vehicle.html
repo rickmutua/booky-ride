@@ -7,6 +7,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    {% block styles %}
+
+        {% bootstrap_css %}
+
+            <link rel="stylesheet" href="{% static 'css/profpic.css' %}">
+
+            <link rel="stylesheet" href="{% static 'css/rider.css' %}">
+
+    {% endblock %}
+
 </head>
 <body>
 
@@ -44,54 +55,74 @@
                 <hr>
 
 
-                {% for vehicle in vehicles %}
+                {% for car in car %}
 
                 <div class="row">
-                    
+
                     <div class="col-sm-6 col-md-6">
-                        
+
                         <h3> Make </h3> <br>
-                        
-                        <p> {{ vehicle.make }}</p>
-                        
+
+                        {% if car.make %}
+
+                        <p style="text-align: center"> {{ car.make }}</p>
+
+                        {% endif %}
+
                     </div>
-                    
+
                     <div class="col-sm-6 col-md-6">
-                        
+
                         <h3> Model </h3> <br>
-                        
-                        <p> {{ vehicle.model }}</p>
-                        
+
+                        {% if car.model %}
+
+                            <p style="text-align: center"> {{ car.model }}</p>
+
+                        {% endif %}
+
                     </div>
-                    
+
                 </div>
-                
+
                 <div class="row">
-                    
+
                     <div class="col-sm-6 col-md-6">
-                        
+
                         <h3> Year </h3> <br>
-                        
-                        <p> {{ vehicle.year }}</p>
-                        
+
+                        {% if car.year %}
+
+                            <p style="text-align: center"> {{ car.year }}</p>
+
+                        {% endif %}
+
                     </div>
-                    
+
                     <div class="col-sm-6 col-md-6">
-                        
+
                         <h3> Registration </h3> <br>
-                        
-                        <p> {{ vehicle.registration }} </p>
-                        
+
+                        {% if car.registration %}
+
+                            <p style="text-align: center"> {{ car.registration }}</p>
+
+                        {% endif %}
+
                     </div>
-                    
+
                 </div>
-                
+
                 <div class="row">
-                    
+
                     <h3> Image </h3>
 
-                    <img src="{{ vehicle.image.url }}" alt="{{vehicle.make}}" class="img-responsive">
-                    
+                    {% if car.image %}
+
+                        <img src="{{ car.image.url }}" alt="{{car.image.url}}" class="img-responsive">
+
+                    {% endif %}
+
                 </div>
 
                 {% endfor %}

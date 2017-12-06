@@ -5,8 +5,6 @@ dj-database-url==0.4.2
 Django==1.11.7
 django-bootstrap3==9.1.0
 django-decouple==2.1
-django-geoposition==0.3.0
-django-location-field==2.0.3
 django-mailbox==4.6.0
 django-registration==2.3
 django-social-auth==0.7.28

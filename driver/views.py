@@ -23,7 +23,7 @@ def driver(request):
 
     try:
 
-        profile = DriverProfile.objects.get(user=current_user.id)
+        profile = DriverProfile.objects.get(user=current_user)
 
     except ObjectDoesNotExist:
 
@@ -62,7 +62,7 @@ def vehicle(request):
 
     try:
 
-        car = Vehicle.objects.get(user=current_user)
+        car = Vehicle.objects.filter(user=current_user).all()
 
     except ObjectDoesNotExist:
 
@@ -116,9 +116,9 @@ def driver_location(request):
 
     try:
 
-        car = Vehicle.objects.get(user=current_user)
+        car = Vehicle.objects.filter(user=current_user).all()
 
-        location = Location.objects.get(user=current_user)
+        location = Location.objects.filter(user=current_user).all()
 
     except ObjectDoesNotExist:
 

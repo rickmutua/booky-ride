@@ -14,7 +14,7 @@
 
             <link rel="stylesheet" href="{% static 'css/profpic.css' %}">
 
-            <link rel="stylesheet" href="{% static 'css/driver.css' %}">
+            <link rel="stylesheet" href="{% static 'css/rider.css' %}">
 
     {% endblock %}
 
@@ -54,19 +54,20 @@
 
                 <hr>
 
-                {% for item in profile %}
 
                     <div class="row">
 
-                        <img src="" class="img-responsive" alt="profpic"> {{ user.first_name }} <br> {{ user.last_name }}
+                        {% if profile.profpic %}
+
+                            <img src="{{profile.profpic.url}}" class="img-responsive" alt="profpic"> {{ user.first_name }} <br> {{ user.last_name }}
+
+                        {% endif %}
 
                     </div>
 
                     <div class="row">
 
                         <h3> Email </h3>
-
-                        <br>
 
                         <p> {{ user.email }} </p>
 
@@ -80,8 +81,6 @@
                             <div class="row">
 
                                 <h3> Mobile </h3>
-
-                                <br>
 
                                 {% if profile.mobile %}
 
@@ -99,8 +98,6 @@
 
                                 <h3> Language </h3>
 
-                                <br>
-
                                 {% if profile.language %}
 
                                     <p> {{ profile.language }} </p>
@@ -115,29 +112,38 @@
 
                     <div class="row">
 
-                        <h3> Address </h3>
+                        <div class="col-sm-6 col-md-6">
+
+                            <h3> Address </h3>
+
+                            {% if profile.address %}
+
+                                <p> {{ profile.address }} </p>
+
+                            {% endif %}
+
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+
+                            <h3> City </h3>
+
+                            {% if profile.city %}
+
+                                <p> {{ profile.city }} </p>
+
+                            {% endif %}
+
+                        </div>
+
 
                         <br>
-
-                        {% if profile.address %}
-
-                            <p> {{ profile.address }} </p>
-
-                        {% endif %}
 
                     </div>
 
                     <div class="row">
 
-                        <h3> City </h3>
 
-                        <br>
-
-                        {% if profile.city %}
-
-                            <p> {{ profile.city }} </p>
-
-                        {% endif %}
 
                     </div>
 
@@ -148,9 +154,6 @@
                         <a href="{% url 'update-profile-driver' %}" class="btn btn-default"> Update </a>
 
                     </div>
-
-
-                {% endfor %}
 
 
             </div>

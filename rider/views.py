@@ -63,9 +63,9 @@ def travel(request):
 
     try:
 
-        profile = RiderProfile.objects.get(user=current_user)
+        profile = RiderProfile.objects.filter(user=current_user).all()
 
-        traveling = Travel.objects.get(user=current_user)
+        traveling = Travel.objects.filter(user=current_user).all()
 
     except ObjectDoesNotExist:
 

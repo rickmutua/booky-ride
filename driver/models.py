@@ -13,7 +13,7 @@ class DriverProfile (models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    profpic = models.ImageField(upload_to='driver-profpic/', blank=True, default=False)
+    profpic = models.ImageField(upload_to='driver-profpic/', blank=True)
 
     language = models.CharField(max_length=30, blank=True)
 
