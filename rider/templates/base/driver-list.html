@@ -42,7 +42,7 @@
 
                 <div class="row">
 
-                    <a href="/driver">
+
 
                         <div class="row">
 
@@ -50,25 +50,13 @@
 
                                 <div class="co-md-2">
 
-                                    {{ request.online_now }}
+                                    <a href="/driver"> {{ request.online_now }} </a>
 
                                 </div>
 
                             {% endif %}
 
                         </div>
-
-
-
-
-                        {% for request.user in request.online_now %}
-
-                            {{ request.online.now }}
-
-                        {% endfor %}
-
-                    </a>
-
 
 
                 </div>
