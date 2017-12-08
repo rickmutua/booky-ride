@@ -42,11 +42,17 @@
 
                 <div class="row">
 
-                    {% if request.user in request.online_now %}
+                    <a href="/driver">
 
-                        {{ request.online_now }}
+                        {% if request.user in request.online_now %}
 
-                    {% endif %}
+                            {{ request.online_now }}
+
+                        {% endif %}
+
+                    </a>
+
+
 
                 </div>
 
