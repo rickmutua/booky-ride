@@ -76,3 +76,12 @@ class Location(models.Model):
     destination = models.CharField(max_length=100)
 
     position = GeopositionField()
+
+
+class Reviews(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    driver = models.ForeignKey(DriverProfile, on_delete=models.CASCADE)
+
+    review = models.TextField(max_length=500)
