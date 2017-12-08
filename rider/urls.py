@@ -19,6 +19,8 @@ urlpatterns = [
 
     url(r'^driver-list/$', views.driver_list, name='driver-list'),
 
+    url(r'^reviews/(\d+)$', views.rider_review, name='rider-reviews'),
+
     url(r'^logout/$', logout, {'index': settings.LOGOUT_REDIRECT_URL}, name='logout'),
 
     url(r'^accounts/', include('registration.backends.simple.urls')),

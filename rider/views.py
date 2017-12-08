@@ -3,8 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 
-from .forms import UserForm, RiderProfileForm, TravelForm
-from .models import RiderProfile, Travel
+from .forms import UserForm, RiderProfileForm, TravelForm, RiderReviewForm
+from .models import RiderProfile, Travel, RiderReview
 
 from django.db import transaction
 
@@ -114,6 +114,47 @@ def update_travel_details(request):
 def driver_list(request):
 
     return render(request, 'base/driver-list.html')
+
+
+def rider_review(request, id):
+
+    review_rider = RiderProfile.objects.get(id=id)
+
+    try:
+
+        if request.method == 'POST':
+
+            form = RiderReviewForm(request.POST)
+
+            if form.is_valid():
+
+                comment = form.save(commit=False)
+                comment.user = request.user
+                comment.rider = review_rider
+
+                comment.save()
+
+                return redirect(reverse('rider-reviews'))
+
+            else:
+
+                comments = RiderReview.objects.filter(rider=review_rider).order_by('-id')
+
+                form = RiderReviewForm()
+
+                return render(request, 'base/rider-reviews.html', {'form': form, 'comments': comments})
+
+        else:
+
+            comments = RiderReview.objects.filter(rider=review_rider).order_by('-id')
+
+            form = RiderReviewForm()
+
+            return render(request, 'base/rider-reviews.html', {'form': form, 'comments': comments})
+
+    except ObjectDoesNotExist:
+
+        raise Http404()
 
 
 

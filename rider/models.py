@@ -52,3 +52,14 @@ class Travel(models.Model):
     destination = models.CharField(max_length=100)
 
     position = GeopositionField()
+
+
+class RiderReview(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    rider = models.ForeignKey(RiderProfile, on_delete=models.CASCADE)
+
+    review = models.TextField()
+
+
