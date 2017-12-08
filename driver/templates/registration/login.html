@@ -30,13 +30,13 @@
 
                         <div class="panel-heading">
 
-                            <h3 class="text-center"> Sign In As A Driver </h3>
+                            <h3 class="text-center"> Sign In </h3>
 
                         </div>
 
                         <div class="panel-body">
 
-                            <form action="/accounts/login/driver" method="post">
+                            <form action="/accounts/login/" method="post">
 
                                 {% csrf_token %}
 
@@ -48,7 +48,7 @@
 
                                     </div>
 
-                                <input type="hidden" name="next" value="{% url 'index-driver' %}">
+                                <input type="hidden" name="next" value="/landing">
 
 
                             </form>

@@ -33,7 +33,7 @@
 
                     <a href="{% url 'vehicle' %}" class="btn btn-default"> Vehicles </a>
 
-                    <a href="" class="btn btn-default"> Reviews </a>
+                    <a href="{% url 'driver-reviews' user.id %}" class="btn btn-default"> Reviews </a>
 
                     <a href="{% url 'driver-location' %}" class="btn btn-default"> Location </a>
 
@@ -114,13 +114,15 @@
 
                         </div>
 
-                </form>
+                    </div>
 
-                <div class="row" style="text-align: center;">
+                    <div class="row" style="text-align: center;">
 
                         <button type="submit" class="text-center"> Save Changes </button>
 
                     </div>
+
+                </form>
 
             </div>
 

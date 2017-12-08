@@ -44,9 +44,9 @@
 
                     <a href="{% url 'vehicle' %}" class="btn btn-default"> Vehicles </a>
 
-                    <a href="" class="btn btn-default"> Reviews </a>
-
                     <a href="{% url 'driver-location' %}" class="btn btn-default"> Location </a>
+
+                    <a href="{% url 'driver-reviews' user.id %}" class="btn btn-default"> Reviews </a>
 
                     <a href="/landing" class="btn btn-default" style="float: right;"> Sign In as Rider </a>
 
