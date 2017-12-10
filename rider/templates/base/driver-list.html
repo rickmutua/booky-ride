@@ -43,17 +43,20 @@
 
                         <div class="row">
 
-                            {% if request.user in request.online_now %}
+                            {% if request.user %}
 
                                 <div class="co-md-2">
 
-                                    <a href="/driver"> {{ request.user }} </a>
+                                    <a href="/driver">  {{ request.online_now }} </a>
 
                                 </div>
 
                             {% endif %}
 
                         </div>
+
+
+                </div>
 
             </div>
 
