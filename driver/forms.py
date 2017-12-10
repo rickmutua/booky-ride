@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from .models import DriverProfile, Vehicle, Location, Reviews
+from .models import DriverProfile, Vehicle, Location, Reviews, Book
 from django import forms
 
 
@@ -46,5 +46,14 @@ class ReviewForm(forms.ModelForm):
         model = Reviews
 
         fields = ('review',)
+
+
+class BookForm(forms.ModelForm):
+
+    class Meta:
+
+        model = Book
+
+        fields = ('seats',)
 
 

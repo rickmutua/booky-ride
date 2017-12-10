@@ -5,6 +5,8 @@ from django.dispatch import receiver
 
 from geoposition.fields import GeopositionField
 
+from rider.models import Travel, RiderProfile
+
 
 # Create your models here.
 
@@ -85,3 +87,16 @@ class Reviews(models.Model):
     driver = models.ForeignKey(DriverProfile, on_delete=models.CASCADE)
 
     review = models.TextField(max_length=500)
+
+
+class Book(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    driver = models.ForeignKey(DriverProfile, on_delete=models.CASCADE)
+
+    rider = models.ForeignKey(RiderProfile, on_delete=models.CASCADE)
+
+    travel = models.ForeignKey(Travel, on_delete=models.CASCADE)
+
+    seats = models.IntegerField()

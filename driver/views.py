@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from .forms import UserForm, DriverProfileForm, VehicleForm, LocationForm, ReviewForm
-from .models import DriverProfile, Vehicle, Location, Reviews
+from .forms import UserForm, DriverProfileForm, VehicleForm, LocationForm, ReviewForm, BookForm
+from .models import DriverProfile, Vehicle, Location, Reviews, Book
+
+from rider.models import RiderProfile, Travel
 
 from django.db import transaction
 
@@ -72,6 +74,7 @@ def vehicle(request):
     return render(request, 'vehicles/vehicle.html', {'car': car, 'title': title})
 
 
+@transaction.atomic
 def update_vehicle_details(request):
 
     current_user = request.user
@@ -126,6 +129,7 @@ def driver_location(request):
     return render(request, 'locations/location.html', {'location': location, 'car': car})
 
 
+@transaction.atomic
 def update_driver_location_details(request):
 
     current_user = request.user
@@ -205,41 +209,49 @@ def driver_reviews(request, id):
 
         raise Http404()
 
-#
-# def review(request):
-#
-#     current_user = request.user
-#
-#     review = request.POST.get('review')
-#
-#     comment = Reviews(review = review)
-#
-#     comment.user = current_user
-#
-#     comment.save()
-#
-#     data = {'Success': 'Reviewed'}
-#
-#     return JsonResponse(data)
 
+def book(request, id):
 
+    try:
 
+        booked_driver = DriverProfile.objects.get(id=id)
+        rider = RiderProfile.objects.filter(id=id)
+        travel = Travel.objects.filter(id=id)
 
+        if request.method == 'POST':
 
+            form = BookForm(request.POST)
 
+            if form.is_valid():
 
-# @login_required(login_url='/accounts/login')
-# def driver_profile(request, username):
-#
-#     try:
-#
-#         user = User.objects.get(username=username)
-#
-#         profile = DriverProfile.objects.filter(user_id=user).all()
-#
-#     except ObjectDoesNotExist:
-#
-#         raise Http404()
-#
-#     return render(request, 'profiles/profile.html', {'profile': profile})
+                booky = form.save(commit=False)
+                booky.user = rider
+                booky.driver = booked_driver
+
+                booky.save()
+
+                return redirect(reverse('book.id'))
+
+            else:
+
+                bookings = Book.objects.filter(driver=booked_driver).order_by('-id')
+
+                form = BookForm()
+
+                return render(request, 'book/bookings.html', {'bookings': bookings, 'form': form,
+                                                              'rider': rider, 'travel': travel})
+
+        else:
+
+            bookings = Book.objects.filter(driver=booked_driver).order_by('-id')
+
+            form = BookForm()
+
+            return render(request, 'book/bookings.html', {'bookings': bookings, 'form': form,
+                                                          'rider': rider, 'travel': travel})
+
+    except ObjectDoesNotExist:
+
+        raise Http404()
+
 

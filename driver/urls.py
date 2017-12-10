@@ -21,11 +21,13 @@ urlpatterns = [
 
     url(r'^update-driver-location-details/$', views.update_driver_location_details, name='update_driver_location_details'),
 
-    url(r'^update-vehicle-details$', views.update_vehicle_details, name='update-vehicle-details'),
+    url(r'^update-vehicle-details/$', views.update_vehicle_details, name='update-vehicle-details'),
 
     url(r'^location/$', views.driver_location, name='driver-location'),
 
     url(r'^review/(\d+)$', views.driver_reviews, name='driver-reviews'),
+
+    url(r'^book/(\d+)$', views.book, name='book'),
 
     url(r'^logout/$', logout, {'index': settings.LOGOUT_REDIRECT_URL}, name='logout')
 
