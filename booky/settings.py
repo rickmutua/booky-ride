@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'rider.apps.RiderConfig',
     'bootstrap3',
     'geoposition',
+    'cart',
 ]
 
 SITE_ID = 1

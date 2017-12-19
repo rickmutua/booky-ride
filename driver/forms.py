@@ -48,12 +48,12 @@ class ReviewForm(forms.ModelForm):
         fields = ('review',)
 
 
-class BookForm(forms.ModelForm):
-
-    class Meta:
-
-        model = Book
-
-        fields = ('seats',)
+# class BookForm(forms.ModelForm):
+#
+#     class Meta:
+#
+#         model = Book
+#
+#         fields = ('seats',)
 
 

@@ -91,12 +91,8 @@ class Reviews(models.Model):
 
 class Book(models.Model):
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
     driver = models.ForeignKey(DriverProfile, on_delete=models.CASCADE)
 
     rider = models.ForeignKey(RiderProfile, on_delete=models.CASCADE)
 
     travel = models.ForeignKey(Travel, on_delete=models.CASCADE)
-
-    seats = models.IntegerField()
