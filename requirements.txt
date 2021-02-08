@@ -11,7 +11,7 @@ django-mailbox==4.6.0
 django-registration==2.3
 django-social-auth==0.7.28
 gunicorn==19.7.1
-httplib2==0.10.3
+httplib2==0.19.0
 idna==2.6
 jsonfield==2.0.2
 lxml==4.1.1
