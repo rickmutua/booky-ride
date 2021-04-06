@@ -8,7 +8,7 @@ django-decouple==2.1
 django-geoposition==0.3.0
 django-location-field==2.0.3
 django-mailbox==4.6.0
-django-registration==2.3
+django-registration==3.1.2
 django-social-auth==0.7.28
 gunicorn==19.7.1
 httplib2==0.10.3
